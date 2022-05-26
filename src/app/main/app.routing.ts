@@ -27,24 +27,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'login-form',
-    component: LoginFormComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'reset-password',
-    component: ResetPasswordFormComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'create-account',
-    component: CreateAccountFormComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'change-password/:recoveryCode',
-    component: ChangePasswordFormComponent,
-    canActivate: [AuthGuardService],
+    path: 'matches',
+    loadChildren: () => import('../view/pages/match/match.module').then((m) => m.MatchModule),
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

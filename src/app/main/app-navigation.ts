@@ -5,6 +5,11 @@ export const navigation = [
     icon: 'home',
   },
   {
+    text: 'Matches',
+    path: '/matches',
+    icon: 'like',
+  },
+  {
     text: 'Perfil',
     path: '/profile',
     icon: 'user',

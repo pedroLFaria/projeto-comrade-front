@@ -26,7 +26,7 @@ export class UsuarioWebRepositoryMapper extends Mapper<UsuarioWebEntity, Usuario
       usuarioEmail: param.email,
       usuarioGenero: param.genero,
       preferenciaGenero: param.preferenciaGenero,
-      usuarioDataDeNascimento: param.dataDeNascimento.toISOString(),
+      usuarioDataDeNascimento: param.dataDeNascimento!.toISOString(),
       preferenciaIdadeMaxima: param.idadeMaxima,
       preferenciaIdadeMinima: param.idadeMinima,
       preferenciaTelefoneDDD: param.telefoneDDD,

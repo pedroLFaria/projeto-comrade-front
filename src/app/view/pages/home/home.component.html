@@ -1,13 +1,12 @@
 <div class="content-block">
   <div class="dx-card responsive-paddings">
-    <div ng-if="!currentUsuario">
-      <span>{{ currentUsuario.nome }}</span>
-      <br />
-      <span>{{ getAge(currentUsuario) }}</span>
+    <ng-container *ngIf="currentUsuario; else NotFund">
+      <p class="font-caption-2b">{{ currentUsuario.nome }}</p>
+      <p class="font-caption-2b" s>Idade: {{ getAge(currentUsuario) }}</p>
       <dx-gallery
         id="gallery"
         [dataSource]="currentUsuario.fotos"
-        height="60vh"
+        height="40vh"
         showIndicator="true"
       ></dx-gallery>
       <dx-button
@@ -26,6 +25,10 @@
         (click)="onClick(false)"
       >
       </dx-button>
-    </div>
+    </ng-container>
   </div>
 </div>
+
+<ng-template #NotFund>
+  <h2 class="content-block">{{ currentUsuario.nome }}</h2>
+</ng-template>

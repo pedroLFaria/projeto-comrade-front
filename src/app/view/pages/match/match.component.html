@@ -1,0 +1,13 @@
+<h2 class="content-block">Matches</h2>
+<div class="content-block dx-card responsive-paddings">
+  <div class="list-container">
+    <dx-list [(dataSource)]="matches" height="100%">
+      <div *dxTemplate="let item of 'item'">
+        <div class="product">
+          <img src="{{ item.fotos![0] }}" />
+          <div>{{ item.nome }}</div>
+        </div>
+      </div>
+    </dx-list>
+  </div>
+</div>

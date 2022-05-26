@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from 'src/app/core/models/usuario.model';
 import { GetUsuarioByIdUsecase } from 'src/app/core/usecases/usuario/get-by-id-usuario.usecase';
-import { PostUpdateUsuarioPreferenceUsecase } from 'src/app/core/usecases/usuario/post-update-usaurio-preference';
+import { PostUpdateUsuarioPreferenceUsecase } from 'src/app/core/usecases/usuario/post-update-usuario-preference';
 
 @Component({
   templateUrl: 'preference.component.html',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from 'src/app/core/models/usuario.model';
+import { PostCurtidaUsecase } from 'src/app/core/usecases/curtida/post-curtida.usecase';
 import { GetAllFotoUsecase } from 'src/app/core/usecases/foto/get-all-foto-by-usuario.usecase';
 import { GetUsuariosByUserPreferenciaUsecase } from 'src/app/core/usecases/usuario/get-usuario-by-user-preferencia.usecase';
 @Component({
@@ -12,10 +13,19 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private getUsuariosByUserPreferenciaUsecase: GetUsuariosByUserPreferenciaUsecase,
-    private getAllFotoUsecase: GetAllFotoUsecase
+    private getAllFotoUsecase: GetAllFotoUsecase,
+    private postCurtidaUsecase: PostCurtidaUsecase
   ) {}
 
-  onClick(isCurtida: boolean) {}
+  onClick(isCurtida: boolean) {
+    this.postCurtidaUsecase
+      .execute({
+        isCurtida: isCurtida,
+        usuarioAlvoId: this.currentUsuario?.id!,
+        usuarioId: 1,
+      })
+      .subscribe(() => this.nextUser());
+  }
 
   ngOnInit(): void {
     this.loadUsuarios(1);
@@ -29,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAge(user: UsuarioModel) {
-    let timeDiff = Math.abs(Date.now() - user.dataDeNascimento.getTime());
+    let timeDiff = Math.abs(Date.now() - user.dataDeNascimento!.getTime());
     let age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     return age;
   }

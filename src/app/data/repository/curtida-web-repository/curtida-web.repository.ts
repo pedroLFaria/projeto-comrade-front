@@ -9,6 +9,8 @@ import { CurtidaWebEntity } from './curtida-web-entity';
 import { SingleResultModel } from 'src/app/core/utils/responses/single-result.model';
 import { CurtidaRepository } from 'src/app/core/repositories/curtida.repository';
 import { CurtidaWebRepositoryMapper } from './curtida-web-repository-mapper';
+import { UsuarioModel } from 'src/app/core/models/usuario.model';
+import { UsuarioWebEntity } from '../usuario-web-repository/usuario-web-entity';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +29,25 @@ export class CurtidaWebRepository extends CurtidaRepository {
         this.mapper.mapTo(curtida)
       )
       .pipe(map((x) => this.mapper.responseWebMapFrom(x.data)));
+  }
+
+  getMatches(userId: number): Observable<PageResultModel<UsuarioModel>> {
+    const usuarios: UsuarioModel[] = [];
+    var request = this.http
+      .getAll<PageResultModel<UsuarioWebEntity>>(
+        `${environment.SYSTEMUSER}curtida/matches/${userId}`
+      )
+      .pipe(
+        map((x) => {
+          x.data.data?.forEach((e) => {
+            usuarios.push({
+              nome: e.usuarioNome ?? '',
+              id: e.usuarioId,
+            });
+          });
+          return { data: usuarios } as PageResultModel<UsuarioModel>;
+        })
+      );
+    return request;
   }
 }

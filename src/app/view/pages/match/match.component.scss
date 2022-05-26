@@ -1,0 +1,42 @@
+.form-avatar {
+  float: left;
+  height: 120px;
+  width: 120px;
+  margin-right: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  overflow: hidden;
+
+  img {
+    height: 120px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+.dx-field-value {
+  width: 100% !important;
+}
+.product > img {
+  height: 100%;
+  float: left;
+}
+
+.product {
+  height: 65px;
+}
+.list-container {
+  height: auto;
+  top: 0;
+  bottom: 0;
+}
+
+.product > div {
+  padding-left: 10px;
+  vertical-align: top;
+  line-height: 65px;
+  font-size: 15px;
+  float: left;
+}

@@ -28,7 +28,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsuarioByIdUsecase.execute(1).subscribe((usuario) => {
-      console.log(usuario.data);
       this.user = usuario.data;
     });
   }

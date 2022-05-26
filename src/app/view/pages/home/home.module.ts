@@ -3,8 +3,9 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing';
 import { throwIfAlreadyLoaded } from '../../../services/guards/module-import.guard';
 import { DxGalleryModule, DxButtonModule } from 'devextreme-angular';
+import { CommonModule } from '@angular/common';
 @NgModule({
-  imports: [HomeRoutingModule, DxGalleryModule, DxButtonModule],
+  imports: [HomeRoutingModule, DxGalleryModule, DxButtonModule, CommonModule],
   exports: [],
   declarations: [HomeComponent],
   providers: [],
